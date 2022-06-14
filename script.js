@@ -1,7 +1,7 @@
 const draggable_list = document.getElementById("draggable-list")
 const check = document.getElementById("check");
 
-const topCurriencies = [
+const topCurrencies = [
     'BTC-USD',
     'ETH-USD',
     'USDT-USD',
@@ -11,29 +11,27 @@ const topCurriencies = [
     'ADA-USD',
     'XRP-USD',
     'SOL-USD',
-    'DOGE-USD'
+    'DOGE-USD',
 ]
 
 const listItems = [];
-let dragStartIndex;
 
-createList();
+createList()
 
 function createList(){
-    [...topCurriencies].forEach((coins, index)=>{
+    [...topCurrencies].forEach((coins, index)=>{
         const listItem = document.createElement('li');
 
         listItem.setAttribute('data-index', index);
+
         listItem.innerHTML = `
         <span class="number">${index + 1}</span>
-            <div class="dragable dragable = true">
-                <p class="coin-name">${coins}</p> 
-                <i class="fa-solid fa-grip-lines"></i>
-            </div>
+        <div class="draggable draggable = true">
+            <p class="coin-name">${coins}</p>
+            <i class="fa-solid fa-grip-lines"></i>
+        </div>
         `;
-
         listItems.push(listItem);
         draggable_list.appendChild(listItem);
-
-    })
-}
+    });
+};
