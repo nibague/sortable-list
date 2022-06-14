@@ -38,4 +38,38 @@ function createList(){
         listItems.push(listItem);
         draggable_list.appendChild(listItem);
     });
+
+    addEventListener()
+};
+
+function dragStart(){
+    console.log('Event:', 'dragStart');
+}
+function dragEnter(){
+    console.log('Event:', 'dragEnter');
+}
+function dragLeave(){
+    console.log('Event:', 'dragLeave');
+}
+function dragOver(){
+    console.log('Event:', 'dragOver');
+}
+function dragDrop(){
+    console.log('Event:', 'dragDrop');
+}
+
+function addEventListener(){
+    const draggables = document.querySelectorAll('.draggable');
+    const dragListItems = document.querySelectorAll('.draggable-list li');
+
+    draggables.forEach(draggable =>{
+        draggable.addEventListener('dragstart', dragStart);
+    });
+
+    dragListItems.forEach(item=> {
+        item.addEventListener('dragover', dragOver);
+        item.addEventListener('drop', dragDrop);
+        item.addEventListener('dragenter', dragEnter);
+        item.addEventListener('dragleave', dragLeave);
+    });
 };
