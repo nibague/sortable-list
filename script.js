@@ -76,11 +76,18 @@ function swapItems(fromIndex, toIndex){
 
     listItems[fromIndex].appendChild(itemTwo);
     listItems[toIndex].appendChild(itemOne);
-    console.log(itemOne)
-    console.log(itemTwo)
-    console.log(listItems[fromIndex])
-    console.log(listItems[toIndex])
+}
 
+function checkOrder(){
+    listItems.forEach((listItem, index)=>{
+        const coinName = listItem.querySelector('.draggable').innerText.trim();
+        if(coinName !== topCurrencies[index]){
+            listItem.classList.add('wrong');
+        }else{
+            listItem.classList.remove('wrong')
+            listItem.classList.add('right')
+        }
+    })
 }
 
 
@@ -99,3 +106,5 @@ function addEventListener(){
         item.addEventListener('dragleave', dragLeave);
     });
 };
+
+check.addEventListener('click', checkOrder);
